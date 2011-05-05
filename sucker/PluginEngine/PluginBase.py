@@ -44,7 +44,7 @@ class PluginBase:
         try:
             f, pathname, desc = imp.find_module(self.info['module'], [self.path])
             module = imp.load_module(self.info['name'], f, pathname, desc)
-            self.info['desc'] = module.__doc__
+            self.info['desc'] = module.__doc__ or ''
             self.plugin_class = getattr(module, self.info['module'])()
         except ImportError as err:
             print (err)
