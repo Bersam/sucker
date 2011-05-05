@@ -22,13 +22,16 @@ class Engine:
                 info_conf.read_string(info_str)
                 info_dic = {}
                 try:
-                    plug_path = os.path.join(root, path)
-                    plug_name = info_conf.get('DEFAULT', 'name')
+                    plug_path   = os.path.join(root, path)
+                    plug_name   = info_conf.get('DEFAULT', 'name')
+                    plug_type   = info_conf.get('DEFAULT', 'type')
+                    plug_module = info_conf.get('DEFAULT', 'module')
+                    from PluginBase import PluginBase
+                    p = PluginBase(plug_path)
+                    p.activate()
                 except configparser.NoOptionError as err:
                     msg = err.message
                     msg = msg[msg.find("'")+1:]
                     msg = msg[:msg.find("'")]
                     print ('Can not load %s plugin from %s.' % (path, plug_path))
                     print ('Option `%s` not found in .sucker-plugin file.' % msg)
-                else:
-                    print ("name: %s\npath: %s\n***\n" % (plug_name, plug_path))
