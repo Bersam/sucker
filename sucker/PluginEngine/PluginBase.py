@@ -16,10 +16,18 @@ class PluginBase:
         self.deactivate()
 
     def activate(self):
-        self.plugin_class.activate()
+        if self.error:
+            self._can_not_msg('activate')
+        else:
+            print(self.info['desc'])
+            self.plugin_class.activate()
 
     def deactivate(self):
-        self.plugin_class.deactivate()
+        if self.error:
+            self._can_not_msg('deactivate')
+        else:
+            self.plugin_class.deactivate()
+
 
     def _load_infofile(self):
         infofile = os.path.join(self.path, self.infofile)
@@ -36,6 +44,7 @@ class PluginBase:
         try:
             f, pathname, desc = imp.find_module(self.info['module'], [self.path])
             module = imp.load_module(self.info['name'], f, pathname, desc)
+            self.info['desc'] = module.__doc__
             self.plugin_class = getattr(module, self.info['module'])()
         except ImportError as err:
             print (err)
@@ -43,3 +52,6 @@ class PluginBase:
         except AttributeError as err:
             print (err)
             self.error = True
+
+    def _can_not_msg(self, func):
+        print('Can not ', func, 'for ', self.info['name'])

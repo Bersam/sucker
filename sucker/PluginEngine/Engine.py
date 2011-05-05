@@ -28,7 +28,8 @@ class Engine:
                     plug_module = info_conf.get('DEFAULT', 'module')
                     from PluginBase import PluginBase
                     p = PluginBase(plug_path)
-                    p.activate()
+                    self.plugins[plug_name] = p
+                    self.plugins[plug_name].activate()
                 except configparser.NoOptionError as err:
                     msg = err.message
                     msg = msg[msg.find("'")+1:]
