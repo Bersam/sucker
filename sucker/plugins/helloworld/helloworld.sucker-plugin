@@ -1,1 +1,3 @@
-NAME = HelloWorld
+Name = HelloWorld
+Type = plugin
+Module = HelloWorld
