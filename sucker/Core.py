@@ -1,4 +1,4 @@
-from gi.repository import Gtk
+import gtk
 
 from PluginEngine import Engine
 from UserInterface import Ui
@@ -6,14 +6,15 @@ from Config import Config
 
 class Core:
     def __init__(self):
-        self.ui = Ui()
-        self.ui.connect('destroy', Gtk.main_quit)
-
         self.config = Config()
 
         self.engine = Engine()
         self.engine.load_plugins()
 
+        self.ui = Ui()
+        self.ui.connect('destroy', gtk.main_quit)
+        self.ui.set_plugin_infos(self.engine.get_infos())
+
     def run(self):
         self.ui.show_all()
-        Gtk.main()
+        gtk.main()

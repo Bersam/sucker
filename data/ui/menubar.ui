@@ -4,5 +4,8 @@
 			<menuitem action='Close' />
 			<menuitem action='Quit'  />
 		</menu>
+		<menu action='Edit'>
+			<menuitem action='Plugins' />
+		</menu>
 	</menubar>
 </ui>

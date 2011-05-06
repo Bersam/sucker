@@ -7,7 +7,7 @@ LAUNCH_DIR = os.path.abspath(sys.path[0])
 SOURCE_DIR = os.path.join(LAUNCH_DIR, '..', 'sucker')
 
 if os.path.exists((os.path.join(SOURCE_DIR, '__init__.py'))):
-    sys.path.insert(0, os.path.dirname(SOURCE_DIR))
+    sys.path.insert(0, os.path.abspath(os.path.dirname(SOURCE_DIR)))
 
 import sucker
 core = sucker.Core()

@@ -1,5 +1,6 @@
-import configparser
+import ConfigParser
 import imp
+import io
 import os.path
 
 class PluginBase:
@@ -19,7 +20,6 @@ class PluginBase:
         if self.error:
             self._can_not_msg('activate')
         else:
-            print(self.info['desc'])
             self.plugin_class.activate()
 
     def deactivate(self):
@@ -28,17 +28,26 @@ class PluginBase:
         else:
             self.plugin_class.deactivate()
 
+    def _activate_function(self, value):
+        if value:
+            self.activate()
+        else:
+            self.deactivate()
 
     def _load_infofile(self):
         infofile = os.path.join(self.path, self.infofile)
         with open(infofile) as f:
                 info_str = f.read()
         string = '[DEFAULT]\n' + info_str
-        conf = configparser.ConfigParser()
-        conf.read_string(string)
+        conf = ConfigParser.ConfigParser()
+        conf.readfp(io.BytesIO(string))
         self.info = dict(conf.defaults())
+
         tmp = self.info['type'].lower().split(',')
         self.info['type'] = [s.strip() for s in tmp]
+
+        self.info['active'] = False
+        self.info['activate_function'] = self._activate_function
 
     def _import_module(self):
         try:

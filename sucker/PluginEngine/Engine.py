@@ -1,7 +1,9 @@
-import configparser
+import ConfigParser
+import io
 import os.path
 
 import sucker
+from PluginBase import PluginBase
 
 class Engine:
     def __init__(self):
@@ -11,28 +13,28 @@ class Engine:
         info_files = []
         for root in sucker.PLUGIN_DIRS:
             for path in os.listdir(root):
-                info_files.append(os.path.join(root, path, '%s.sucker-plugin' % path))
+                info_files.append(os.path.abspath(os.path.join(root, path, '%s.sucker-plugin' % path)))
 
         for info_file in info_files:
             if os.path.isfile(info_file):
                 with open(info_file) as f:
                     info_str = f.read()
                 info_str = '[DEFAULT]\n' + info_str
-                info_conf = configparser.ConfigParser()
-                info_conf.read_string(info_str)
-                info_dic = {}
+                info_conf = ConfigParser.ConfigParser()
+                info_conf.readfp(io.BytesIO(info_str))
                 try:
-                    plug_path   = os.path.join(root, path)
+                    plug_path, plug_tail = os.path.split(info_file)
                     plug_name   = info_conf.get('DEFAULT', 'name')
                     plug_type   = info_conf.get('DEFAULT', 'type')
                     plug_module = info_conf.get('DEFAULT', 'module')
-                    from PluginBase import PluginBase
-                    p = PluginBase(plug_path)
-                    self.plugins[plug_name] = p
-                    self.plugins[plug_name].activate()
-                except configparser.NoOptionError as err:
+                    self.plugins[plug_name] = PluginBase(plug_path)
+                except ConfigParser.NoOptionError as err:
                     msg = err.message
                     msg = msg[msg.find("'")+1:]
                     msg = msg[:msg.find("'")]
                     print ('Can not load %s plugin from %s.' % (path, plug_path))
                     print ('Option `%s` not found in .sucker-plugin file.' % msg)
+
+    def get_infos(self):
+        infos = [self.plugins[key].info for key in self.plugins]
+        return infos
