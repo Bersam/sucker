@@ -3,7 +3,7 @@ import io
 import os.path
 
 import sucker
-from PluginBase import PluginBase
+from Plugin import Plugin
 
 class Engine:
     def __init__(self):
@@ -27,7 +27,7 @@ class Engine:
                     plug_name   = info_conf.get('DEFAULT', 'name')
                     plug_type   = info_conf.get('DEFAULT', 'type')
                     plug_module = info_conf.get('DEFAULT', 'module')
-                    self.plugins[plug_name] = PluginBase(plug_path)
+                    self.plugins[plug_name] = Plugin(plug_path)
                 except ConfigParser.NoOptionError as err:
                     msg = err.message
                     msg = msg[msg.find("'")+1:]
