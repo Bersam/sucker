@@ -4,16 +4,6 @@ import os
 
 import sucker
 
-TEMPLATE = '''
-<b>%s</b>
-<b>Description :</b>
-    %s
-<b>Author:</b>
-    %s
-<b>Version:</b>
-    %s
-'''
-
 class PluginsDialog(gtk.Dialog):
     def __init__(self):
         gtk.Dialog.__init__(self)
@@ -71,10 +61,20 @@ class PluginsDialog(gtk.Dialog):
             if info['name'] == name:
                 break
 
-        string =  TEMPLATE % (info['name'], info['desc'], info['author'], info['version'])
+        label  = self.builder.get_object('plugin_title')
+        label.set_markup('<span font="25" size="xx-large">%s</span>' % info['name'])
 
-        label  = self.builder.get_object('label')
-        label.set_markup(string)
+        label  = self.builder.get_object('description_text')
+        label.set_text(info['desc'])
+
+        label  = self.builder.get_object('description_text')
+        label.set_text(info['desc'])
+
+        label  = self.builder.get_object('authors_text')
+        label.set_text(info['author'])
+
+        button = self.builder.get_object('configure_button')
+        button.set_sensitive(False)
 
     def _enabled_toggle(self, toggle, path):
         tree  = self.builder.get_object('treeview')
