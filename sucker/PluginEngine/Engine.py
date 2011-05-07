@@ -27,8 +27,6 @@ class Engine:
                     plug_name   = info_conf.get('DEFAULT', 'name')
                     plug_type   = info_conf.get('DEFAULT', 'type')
                     plug_module = info_conf.get('DEFAULT', 'module')
-                    plug_version = info_conf.get('DEFAULT', 'version')
-                    plug_author = info_conf.get('DEFAULT', 'author')
                     self.plugins[plug_name] = Plugin(plug_path)
                 except ConfigParser.NoOptionError as err:
                     msg = err.message
