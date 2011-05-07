@@ -1,3 +1,5 @@
 Name = HelloWorld
 Type = plugin
 Module = HelloWorld
+Version = 1.0
+Author = Aliva
