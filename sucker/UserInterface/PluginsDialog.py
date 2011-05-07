@@ -4,6 +4,16 @@ import os
 
 import sucker
 
+TEMPLATE = '''
+<b>%s</b>
+<b>Description :</b>
+    %s
+<b>Author:</b>
+    %s
+<b>Version:</b>
+    %s
+'''
+
 class PluginsDialog(gtk.Dialog):
     def __init__(self):
         gtk.Dialog.__init__(self)
@@ -61,11 +71,7 @@ class PluginsDialog(gtk.Dialog):
             if info['name'] == name:
                 break
 
-        string = '''
-        <b>%s</b>
-        Description :
-        %s
-        ''' % (info['name'], info['desc'])
+        string =  TEMPLATE % (info['name'], info['desc'], info['author'], info['version'])
 
         label  = self.builder.get_object('label')
         label.set_markup(string)
