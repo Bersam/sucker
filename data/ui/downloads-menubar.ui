@@ -1,0 +1,9 @@
+<ui>
+	<menubar name='MenuBar'>
+		<placeholder name='Tab'>
+			<menu action='Downloads'>
+			<menuitem action='NewDownload' />
+			</menu>
+		</placeholder>
+	</menubar>
+</ui>

@@ -9,9 +9,24 @@ class DownloadsTab(gtk.VBox):
 
         self._setup_menubar()
 
+    def get_menubar_actiongroup(self):
+        entries = (
+            ('Downloads'  , None         , '_Downloads'          , None    , None ,None),
+            ('NewDownload', gtk.STOCK_ADD, '_Create New Download', '<ctl>n', None , self._new_download_action),
+        )
+
+        action = gtk.ActionGroup('DownloadsTabAction')
+        action.add_actions(entries)
+
+        ui_file = os.path.join(sucker.DATA_DIR, 'ui', 'downloads-menubar.ui')
+        with open(ui_file) as f:
+            string = f.read()
+
+        return action, string
+
     def _setup_menubar(self):
         entries = (
-            ('Add', gtk.STOCK_ADD, None, None, None, None),
+            ('Add', gtk.STOCK_ADD, None, None, None, self._new_download_action),
         )
 
         action = gtk.ActionGroup('DownloadTabAction')
@@ -25,3 +40,6 @@ class DownloadsTab(gtk.VBox):
 
         self.pack_start(self._toolbar.get_widget('/ToolBar'), False, True, 0)
         #self.add_accel_group(self._menubar.get_accel_group())
+
+    def _new_download_action(self, action):
+        print ('New Download!!!')

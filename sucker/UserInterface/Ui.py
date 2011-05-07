@@ -18,8 +18,11 @@ class Ui(gtk.Window):
         self._setup_menubar()
 
         self._notebook = gtk.Notebook()
+        self._notebook.connect('switch-page', self._notebook_tab_changed)
         self._box.pack_start(self._notebook, True, True, 0)
+
         self._attach_downloads_tab()
+        self._attach_torrents_tab()
 
     def set_plugin_infos(self, infos):
         self.plugin_infos = infos
@@ -60,3 +63,20 @@ class Ui(gtk.Window):
     def _attach_downloads_tab(self):
         self._downloads_tab = DownloadsTab()
         self._notebook.append_page(self._downloads_tab, gtk.Label("Downloads"))
+
+    def _attach_torrents_tab(self):
+        self._torrents_tab = gtk.Label('Torrent')
+        self._notebook.append_page(self._torrents_tab, gtk.Label("Torrents"))
+
+    def _notebook_tab_changed(self, notebook, tab, num):
+        if num == 0:
+            action , string = self._downloads_tab.get_menubar_actiongroup()
+            self._menubar.insert_action_group(action, 0)
+            id = self._menubar.add_ui_from_string(string)
+            self._current_tab_menubar_ui_id  = id
+            self._current_tab_menubar_action = action
+        else:
+            self._menubar.remove_ui(self._current_tab_menubar_ui_id)
+            self._menubar.remove_action_group(self._current_tab_menubar_action)
+
+        self._menubar.ensure_update()

@@ -7,5 +7,6 @@
 		<menu action='Edit'>
 			<menuitem action='Plugins' />
 		</menu>
+		<placeholder name='Tab' />
 	</menubar>
 </ui>
