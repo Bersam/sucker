@@ -4,11 +4,13 @@ import io
 import os.path
 
 class Plugin:
-    def __init__(self, path):
+    def __init__(self, path, shell):
         self.error = False
         self.path = path
         tmp, name = os.path.split(path)
         self.infofile = '%s.sucker-plugin' % name
+
+        self.shell = shell
 
         self._load_infofile()
         self._import_module()
@@ -20,13 +22,13 @@ class Plugin:
         if self.error:
             self._can_not_msg('activate')
         else:
-            self.plugin_class.activate()
+            self.plugin_class.activate(self.shell)
 
     def deactivate(self):
         if self.error:
             self._can_not_msg('deactivate')
         else:
-            self.plugin_class.deactivate()
+            self.plugin_class.deactivate(self.shell)
 
     def _activate_function(self, value):
         if value:
