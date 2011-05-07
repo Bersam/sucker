@@ -3,7 +3,7 @@ import imp
 import io
 import os.path
 
-class PluginBase:
+class Plugin:
     def __init__(self, path):
         self.error = False
         self.path = path
