@@ -4,9 +4,15 @@
 			<menuitem action='Close' />
 			<menuitem action='Quit'  />
 		</menu>
+		
 		<menu action='Edit'>
 			<menuitem action='Plugins' />
 		</menu>
+		
 		<placeholder name='Tab' />
+		
+		<menu action='Help'>
+			<menuitem action='About' />
+		</menu>
 	</menubar>
 </ui>

@@ -34,6 +34,8 @@ class Ui(gtk.Window):
             ('Quit'   , gtk.STOCK_QUIT , None      , '<ctl>q' , None, self._quit_action),
             ('Edit'   , None           , '_Edit'   , None     , None, None),
             ('Plugins', None           , '_Plugins', None     , None, self._plugin_action),
+            ('Help'   , None           , '_Help'   , None     , None, None),
+            ('About'  , gtk.STOCK_ABOUT, None      , None     , None, self._about_action),
         )
 
         action = gtk.ActionGroup('MenuBarAction')
@@ -48,6 +50,25 @@ class Ui(gtk.Window):
         self._box.pack_start(self._menubar.get_widget('/MenuBar'), False, True, 0)
         self.add_accel_group(self._menubar.get_accel_group())
 
+    def _about_action(self, action):
+        authors = (
+            'Maintainers:',
+            'Ali Vakilzade <ali.vakilzade@gmail.com>',
+            'Bersam',
+        )
+
+        dialog = gtk.AboutDialog()
+        dialog.set_name('Sucker!')
+        dialog.set_version(sucker.VERSION)
+        dialog.set_comments('It Sucks!')
+        dialog.set_copyright('GPLv3')
+        dialog.set_license('Blah blah GPLv3 blah blah.\nYou should blah but you can\'t blah.\nIf you had\'nt blah so blah')
+        dialog.set_website('https://github.com/aliva/sucker')
+        dialog.set_website_label('Homepage')
+        dialog.set_authors(authors)
+        dialog.run()
+        dialog.destroy()
+    
     def _quit_action(self, action):
         self.emit('destroy')
 

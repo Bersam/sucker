@@ -7,6 +7,8 @@ sys.path.insert(0, os.path.abspath(os.path.dirname(__file__)))
 
 from Core import Core
 
+VERSION = '0.0.1'
+
 ROOT_DIR = os.path.abspath(os.path.join(__file__, '..', '..'))
 DATA_DIR = os.path.abspath(os.path.join(ROOT_DIR, 'data'))
 
