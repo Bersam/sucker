@@ -1,5 +1,6 @@
 <ui>
 	<toolbar name='ToolBar'>
 		<toolitem action='Add' />
+		<placeholder name='PluginPlaceholder' />
 	</toolbar>
 </ui>
