@@ -42,4 +42,11 @@ class DownloadsTab(gtk.VBox):
         #self.add_accel_group(self._menubar.get_accel_group())
 
     def _new_download_action(self, action):
-        print ('New Download!!!')
+        ui_file = os.path.join(sucker.DATA_DIR, 'ui', 'downloads-add-dialog.ui')
+
+        builder = gtk.Builder()
+        builder.add_from_file(ui_file)
+
+        dialog = builder.get_object('general')
+        dialog.run()
+        dialog.destroy()
