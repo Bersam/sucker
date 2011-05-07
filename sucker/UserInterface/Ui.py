@@ -2,6 +2,7 @@ import gtk
 import os.path
 
 import sucker
+from DownloadsTab import DownloadsTab
 from PluginsDialog import PluginsDialog
 
 class Ui(gtk.Window):
@@ -15,6 +16,10 @@ class Ui(gtk.Window):
         self.add(self._box)
 
         self._setup_menubar()
+
+        self._notebook = gtk.Notebook()
+        self._box.pack_start(self._notebook, True, True, 0)
+        self._attach_downloads_tab()
 
     def set_plugin_infos(self, infos):
         self.plugin_infos = infos
@@ -51,3 +56,7 @@ class Ui(gtk.Window):
         dialog.create_rows(self.plugin_infos)
         dialog.run()
         dialog.destroy()
+
+    def _attach_downloads_tab(self):
+        self._downloads_tab = DownloadsTab()
+        self._notebook.append_page(self._downloads_tab, gtk.Label("Downloads"))
