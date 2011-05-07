@@ -5,8 +5,8 @@ class HelloWorld:
     def __init__(self):
         pass
 
-    def activate(self):
+    def activate(self, shell):
         print ("Hello World Activated")
 
-    def deactivate(self):
+    def deactivate(self, shell):
         print ("Hello World Deactivated")

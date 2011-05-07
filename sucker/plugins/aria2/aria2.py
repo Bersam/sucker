@@ -17,8 +17,8 @@ class aria2:
     def status(self,gid):
     	self.su.aria2.tellStatus(gid)
 
-    def activate(self):
+    def activate(self, shell):
         print ("aria2 plugin Activated")
 
-    def deactivate(self):
+    def deactivate(self, shell):
         print ("aria2 plugin Deactivated")
