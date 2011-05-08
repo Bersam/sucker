@@ -2,4 +2,4 @@ Name = Hello
 Type = Plugin
 Module = Hello
 Version = 1.0
-Author = Aliva
+Authors = Ali Vakilzade <ali.vakilzade@gmail.com>

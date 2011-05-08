@@ -1,5 +1,6 @@
 Name = HelloWorld
 Type = plugin
 Module = HelloWorld
-Version = 1.0
-Author = Aliva
+Authors = Ali Vakilzade <ali.vakilzade@gmail.com>
+Copyright = Copyright © 2011 Ali Vakilzade
+Website = https://github.com/aliva/sucker

@@ -1,5 +1,5 @@
-'''This is the HelloWorld plugin.
-Can do noting!'''
+'''HelloWorld plugin for testing
+sucker plugin engine'''
 
 class HelloWorld:
     def __init__(self):

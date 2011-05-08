@@ -62,13 +62,13 @@ class PluginsDialog(gtk.Dialog):
                 break
 
         label  = self.builder.get_object('plugin_title')
-        label.set_markup('<span font="25" size="xx-large">%s</span>' % info['name'])
+        label.set_markup('<span font="20" size="xx-large">%s</span>' % info['name'])
 
         label  = self.builder.get_object('description_text')
         label.set_text(info['desc'])
 
         label  = self.builder.get_object('authors_text')
-        label.set_text(info['author'])
+        label.set_text(info['authors'])
 
         label  = self.builder.get_object('copyright_text')
         label.set_text(info['copyright'])

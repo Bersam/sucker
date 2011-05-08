@@ -53,6 +53,13 @@ class Plugin:
         self.info['active'] = False
         self.info['activate_function'] = self._activate_function
 
+        if not self.info.has_key('website'):
+            self.info['website'] = ''
+        if not self.info.has_key('copyright'):
+            self.info['copyright'] = ''
+        if not self.info.has_key('authors'):
+            self.info['authors'] = ''
+
     def _import_module(self):
         try:
             f, pathname, desc = imp.find_module(self.info['module'], [self.path])

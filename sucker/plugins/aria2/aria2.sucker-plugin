@@ -1,7 +1,6 @@
 Name = aria2
-Type = downloader
+Type = downloader,plugin
 Module = aria2
-Version = 1.0
-Author = Bersam
-Copyright = GPLv3
-Site = http://bersam.wordpress.com
+Authors = Bersam Karbasion <bersam.k@gmail.com>
+Copyright = Bersam Karbasion
+Website = https://github.com/aliva/sucker
