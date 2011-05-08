@@ -6,8 +6,10 @@ from DownloadsTab import DownloadsTab
 from PluginsDialog import PluginsDialog
 
 class Ui(gtk.Window):
-    def __init__(self):
+    def __init__(self, engine):
         gtk.Window.__init__(self)
+
+        self.plugin_engine = engine
 
         self.set_title('Sucker')
         self.resize(400, 400)
@@ -82,7 +84,7 @@ class Ui(gtk.Window):
         dialog.destroy()
 
     def _attach_downloads_tab(self):
-        self._downloads_tab = DownloadsTab()
+        self._downloads_tab = DownloadsTab(self.plugin_engine)
         self._notebook.append_page(self._downloads_tab, gtk.Label("Downloads"))
 
     def _attach_torrents_tab(self):

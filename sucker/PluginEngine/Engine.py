@@ -20,7 +20,7 @@ class Engine:
             if os.path.isfile(info_file):
                 with open(info_file) as f:
                     info_str = f.read()
-                info_str = '[DEFAULT]\n' + info_str
+                info_str  = '[DEFAULT]\n' + info_str
                 info_conf = ConfigParser.ConfigParser()
                 info_conf.readfp(io.BytesIO(info_str))
                 try:
