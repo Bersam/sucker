@@ -20,13 +20,15 @@ def find_data(name):
         full_address = os.path.join(dir, name)
         if os.path.exists(full_address):
             return full_address
-        print full_address
 
 CONFIG_DIR = os.path.join(glib.get_user_config_dir(), 'sucker')
 if not os.path.isdir(CONFIG_DIR):
     os.makedirs(CONFIG_DIR)
 
-PLUGIN_DIRS = [os.path.join(ROOT_DIR, 'sucker/plugins')]
 
+PLUGIN_DIRS  = xdg.BaseDirectory.xdg_data_dirs
+PLUGIN_DIRS  = [os.path.join(dir, 'sucker/plugins') for dir in PLUGIN_DIRS]
+PLUGIN_DIRS.insert(0, os.path.join(ROOT_DIR, 'sucker/plugins'))
+PLUGIN_DIRS  = [dir for dir in PLUGIN_DIRS if os.path.isdir(dir)]
 if os.path.isdir(os.path.join(CONFIG_DIR, 'plugins')):
     PLUGIN_DIRS.append(os.path.join(CONFIG_DIR, 'plugins'))

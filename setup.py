@@ -16,13 +16,14 @@ setup(name="sucker",
             'sucker',
             'sucker.PluginEngine',
             'sucker.UserInterface',
-
-            'sucker.plugins.helloworld',
-            'sucker.plugins.aria2',
             ],
 
         data_files=[
             ('share/sucker/ui', glob('data/ui/*.ui')),
+            ('share/sucker/plugins/helloworld', glob('sucker/plugins/helloworld/*.py')),
+            ('share/sucker/plugins/helloworld', glob('sucker/plugins/helloworld/*.sucker-plugin')),
+            ('share/sucker/plugins/aria2', glob('sucker/plugins/aria2/*.py')),
+            ('share/sucker/plugins/aria2', glob('sucker/plugins/aria2/*.sucker-plugin')),
         ],
         cmdclass = {
             'build' :  build_extra.build_extra,
