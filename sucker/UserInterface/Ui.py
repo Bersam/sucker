@@ -56,7 +56,7 @@ class Ui(gtk.Window):
         authors = (
             'Maintainers:',
             'Ali Vakilzade <ali.vakilzade@gmail.com>',
-            'Bersam',
+            'Bersam Karbasion <bersam.k@gmail.com>',
         )
 
         dialog = gtk.AboutDialog()
