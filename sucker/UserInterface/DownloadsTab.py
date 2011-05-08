@@ -51,6 +51,7 @@ class DownloadsTab(gtk.VBox):
         builder.add_from_file(ui_file)
 
         combo = builder.get_object('downloadmanager-selector')
+        combo.connect('changed', self._add_combo_changed, builder)
 
         model = gtk.ListStore(gtk.gdk.Pixbuf, gobject.TYPE_STRING)
         combo.set_model(model)
@@ -69,5 +70,14 @@ class DownloadsTab(gtk.VBox):
                 model.set(iter, 0, None, 1, info['name'])
 
         dialog = builder.get_object('general')
+        dialog.connect('response', self._add_response, builder)
         dialog.run()
+
+    def _add_response(self, dialog, response, builder):
         dialog.destroy()
+
+    def _add_combo_changed(self, combo, builder):
+        model  = combo.get_model()
+        active = combo.get_active()
+        selected = model[active][1]
+        print selected
