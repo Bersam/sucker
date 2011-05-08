@@ -54,7 +54,6 @@ class Ui(gtk.Window):
 
     def _about_action(self, action):
         authors = (
-            'Maintainers:',
             'Ali Vakilzade <ali.vakilzade@gmail.com>',
             'Bersam Karbasion <bersam.k@gmail.com>',
         )
