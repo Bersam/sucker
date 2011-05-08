@@ -67,14 +67,18 @@ class PluginsDialog(gtk.Dialog):
         label  = self.builder.get_object('description_text')
         label.set_text(info['desc'])
 
-        label  = self.builder.get_object('description_text')
-        label.set_text(info['desc'])
-
         label  = self.builder.get_object('authors_text')
         label.set_text(info['author'])
 
+        label  = self.builder.get_object('copyright_text')
+        label.set_text(info['copyright'])
+
+        label  = self.builder.get_object('site_text')
+        label.set_text(info['website'])
+
         button = self.builder.get_object('configure_button')
         button.set_sensitive(False)
+        
 
     def _enabled_toggle(self, toggle, path):
         tree  = self.builder.get_object('treeview')
