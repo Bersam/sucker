@@ -43,7 +43,7 @@ class Plugin:
         with open(infofile) as f:
                 info_str = f.read()
         string = '[DEFAULT]\n' + info_str
-        conf = ConfigParser.ConfigParser()
+        conf = ConfigParser.ConfigParser({'website':'', 'copyright':'', 'authors':''})
         conf.readfp(io.BytesIO(string))
         self.info = dict(conf.defaults())
 
@@ -52,13 +52,6 @@ class Plugin:
 
         self.info['active'] = False
         self.info['activate_function'] = self._activate_function
-
-        if not self.info.has_key('website'):
-            self.info['website'] = ''
-        if not self.info.has_key('copyright'):
-            self.info['copyright'] = ''
-        if not self.info.has_key('authors'):
-            self.info['authors'] = ''
 
     def _import_module(self):
         try:
