@@ -3,3 +3,5 @@ Type = downloader
 Module = aria2
 Version = 1.0
 Author = Bersam
+Copyright = GPLv3
+Site = http://bersam.wordpress.com
