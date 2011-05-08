@@ -1,6 +1,7 @@
 import gobject
 import gtk
 import os
+from gettext import lgettext as _
 
 import sucker
 
@@ -42,11 +43,11 @@ class PluginsDialog(gtk.Dialog):
 
         renderer = gtk.CellRendererToggle()
         renderer.connect('toggled', self._enabled_toggle)
-        column = gtk.TreeViewColumn("Enabled", renderer, active=0)
+        column = gtk.TreeViewColumn(_("Enabled"), renderer, active=0)
         tree.append_column(column)
 
         renderer = gtk.CellRendererText()
-        column = gtk.TreeViewColumn("Plugin", renderer, text=1)
+        column = gtk.TreeViewColumn(_("Plugin"), renderer, text=1)
         tree.append_column(column)
 
         selection = self.builder.get_object('treeview-selection')

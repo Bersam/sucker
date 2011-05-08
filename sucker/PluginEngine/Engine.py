@@ -33,8 +33,8 @@ class Engine:
                     msg = err.message
                     msg = msg[msg.find("'")+1:]
                     msg = msg[:msg.find("'")]
-                    print ('Can not load %s plugin from %s.' % (path, plug_path))
-                    print ('Option `%s` not found in .sucker-plugin file.' % msg)
+                    print _("Can not load %s plugin from %s." % (path, plug_path))
+                    print _("Option `%s` not found in .sucker-plugin file." % msg)
 
     def get_infos(self):
         infos = [self.plugins[key].info for key in self.plugins]

@@ -1,3 +1,9 @@
 sucker.desktop.in
 bin/sucker
-[type: gettext/glade] data/ui/menubar.ui
+sucker/PluginEngine/Engine.py
+sucker/PluginEngine/Plugin.py
+sucker/UserInterface/DownloadsTab.py
+sucker/UserInterface/PluginsDialog.py
+sucker/UserInterface/Ui.py
+[type: gettext/glade] data/ui/downloads-add-dialog.ui
+[type: gettext/glade] data/ui/plugins.ui

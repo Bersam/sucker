@@ -1,6 +1,7 @@
 import gobject
 import gtk
 import os
+from gettext import lgettext as _
 
 import sucker
 
@@ -14,8 +15,8 @@ class DownloadsTab(gtk.VBox):
 
     def get_menubar_actiongroup(self):
         entries = (
-            ('Downloads'  , None         , '_Downloads'          , None    , None ,None),
-            ('NewDownload', gtk.STOCK_ADD, '_Create New Download', '<ctl>n', None , self._new_download_action),
+            ('Downloads'  , None         , _("_Downloads")          , None    , None ,None),
+            ('NewDownload', gtk.STOCK_ADD, _("_Create New Download"), '<ctl>n', None , self._new_download_action),
         )
 
         action = gtk.ActionGroup('DownloadsTabAction')

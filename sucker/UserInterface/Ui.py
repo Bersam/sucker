@@ -1,5 +1,6 @@
 import gtk
 import os.path
+from gettext import lgettext as _
 
 import sucker
 from DownloadsTab import DownloadsTab
@@ -11,7 +12,7 @@ class Ui(gtk.Window):
 
         self.plugin_engine = engine
 
-        self.set_title('Sucker')
+        self.set_title(_("Sucker"))
         self.resize(400, 400)
 
         self._box = gtk.VBox()
@@ -31,13 +32,13 @@ class Ui(gtk.Window):
 
     def _setup_menubar(self):
         entries = (
-            ('File'   , None           , '_File'   , None     , None, None),
-            ('Close'  , gtk.STOCK_CLOSE, None      , '<ctl>w' , None, self._close_action),
-            ('Quit'   , gtk.STOCK_QUIT , None      , '<ctl>q' , None, self._quit_action),
-            ('Edit'   , None           , '_Edit'   , None     , None, None),
-            ('Plugins', None           , '_Plugins', None     , None, self._plugin_action),
-            ('Help'   , None           , '_Help'   , None     , None, None),
-            ('About'  , gtk.STOCK_ABOUT, None      , None     , None, self._about_action),
+            ('File'   , None           , _("_File")   , None     , None, None),
+            ('Close'  , gtk.STOCK_CLOSE, None         , '<ctl>w' , None, self._close_action),
+            ('Quit'   , gtk.STOCK_QUIT , None         , '<ctl>q' , None, self._quit_action),
+            ('Edit'   , None           , _("_Edit")   , None     , None, None),
+            ('Plugins', None           , _("_Plugins"), None     , None, self._plugin_action),
+            ('Help'   , None           , _("_Help")   , None     , None, None),
+            ('About'  , gtk.STOCK_ABOUT, None         , None     , None, self._about_action),
         )
 
         action = gtk.ActionGroup('MenuBarAction')
@@ -59,13 +60,13 @@ class Ui(gtk.Window):
         )
 
         dialog = gtk.AboutDialog()
-        dialog.set_name('Sucker!')
+        dialog.set_name(_("Sucker!"))
         dialog.set_version(sucker.VERSION)
-        dialog.set_comments('It Sucks!')
+        dialog.set_comments(_("It Sucks!"))
         dialog.set_copyright('GPLv3')
         dialog.set_license('Blah blah GPLv3 blah blah.\nYou should blah but you can\'t blah.\nIf you had\'nt blah so blah')
         dialog.set_website('https://github.com/aliva/sucker')
-        dialog.set_website_label('Homepage')
+        dialog.set_website_label(_("Homepage"))
         dialog.set_authors(authors)
         dialog.run()
         dialog.destroy()
@@ -84,11 +85,11 @@ class Ui(gtk.Window):
 
     def _attach_downloads_tab(self):
         self._downloads_tab = DownloadsTab(self.plugin_engine)
-        self._notebook.append_page(self._downloads_tab, gtk.Label("Downloads"))
+        self._notebook.append_page(self._downloads_tab, gtk.Label(_("Downloads")))
 
     def _attach_torrents_tab(self):
         self._torrents_tab = gtk.Label('Torrent')
-        self._notebook.append_page(self._torrents_tab, gtk.Label("Torrents"))
+        self._notebook.append_page(self._torrents_tab, gtk.Label(_("Torrents")))
 
     def _notebook_tab_changed(self, notebook, tab, num):
         if num == 0:

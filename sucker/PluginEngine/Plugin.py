@@ -2,6 +2,8 @@ import ConfigParser
 import imp
 import io
 import os.path
+from gettext import lgettext as _
+
 
 class Plugin:
     def __init__(self, path, shell):
@@ -19,6 +21,7 @@ class Plugin:
         self.deactivate()
 
     def activate(self):
+        self._can_not_msg('activate')
         if self.error:
             self._can_not_msg('activate')
         else:
@@ -74,4 +77,4 @@ class Plugin:
             self.error = True
 
     def _can_not_msg(self, func):
-        print('Can not ', func, 'for ', self.info['name'])
+        print _("Can not run function: %s for %s" % (func, self.info['name']))
