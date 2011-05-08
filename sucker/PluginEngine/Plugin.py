@@ -23,12 +23,14 @@ class Plugin:
             self._can_not_msg('activate')
         else:
             self.plugin_class.activate(self.shell)
+            self.info['active'] = True
 
     def deactivate(self):
         if self.error:
             self._can_not_msg('deactivate')
         else:
             self.plugin_class.deactivate(self.shell)
+            self.info['active'] = False
 
     def _activate_function(self, value):
         if value:

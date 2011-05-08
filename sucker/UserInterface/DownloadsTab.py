@@ -63,7 +63,7 @@ class DownloadsTab(gtk.VBox):
         combo.pack_start(renderer)
         combo.add_attribute(renderer, 'text', 1)
 
-        for info in self.plugin_engine.get_infos():
+        for info in self.plugin_engine.get_active_infos():
             if 'downloader' in info['type']:
                 iter = model.append()
                 model.set(iter, 0, None, 1, info['name'])

@@ -39,3 +39,7 @@ class Engine:
     def get_infos(self):
         infos = [self.plugins[key].info for key in self.plugins]
         return infos
+
+    def get_active_infos(self):
+        infos = [self.plugins[key].info for key in self.plugins if self.plugins[key].info['active']==True]
+        return infos
