@@ -3,6 +3,13 @@
 import os.path
 import sys
 
+import gettext
+from gettext import lgettext as _
+if hasattr(gettext, 'bind_textdomain_codeset'):
+    gettext.bind_textdomain_codeset('sucker','UTF-8')
+print _("Fuck World!")
+
+gettext.textdomain('gwibber')
 LAUNCH_DIR = os.path.abspath(sys.path[0])
 SOURCE_DIR = os.path.join(LAUNCH_DIR, '..', 'sucker')
 

@@ -21,7 +21,7 @@ class DownloadsTab(gtk.VBox):
         action = gtk.ActionGroup('DownloadsTabAction')
         action.add_actions(entries)
 
-        ui_file = os.path.join(sucker.DATA_DIR, 'ui', 'downloads-menubar.ui')
+        ui_file = sucker.find_data('ui/downloads-menubar.ui')
         with open(ui_file) as f:
             string = f.read()
 
@@ -35,7 +35,7 @@ class DownloadsTab(gtk.VBox):
         action = gtk.ActionGroup('DownloadTabAction')
         action.add_actions(entries)
 
-        ui_file = os.path.join(sucker.DATA_DIR, 'ui', 'downloads-toolbar.ui')
+        ui_file = sucker.find_data('ui/downloads-toolbar.ui')
 
         self._toolbar = gtk.UIManager()
         self._toolbar.add_ui_from_file(ui_file)
@@ -45,7 +45,7 @@ class DownloadsTab(gtk.VBox):
         #self.add_accel_group(self._menubar.get_accel_group())
 
     def _new_download_action(self, action):
-        ui_file = os.path.join(sucker.DATA_DIR, 'ui', 'downloads-add-dialog.ui')
+        ui_file = sucker.find_data('ui/downloads-add-dialog.ui')
 
         builder = gtk.Builder()
         builder.add_from_file(ui_file)

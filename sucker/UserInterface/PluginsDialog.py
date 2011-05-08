@@ -8,7 +8,7 @@ class PluginsDialog(gtk.Dialog):
     def __init__(self):
         gtk.Dialog.__init__(self)
 
-        ui_file = os.path.join(sucker.DATA_DIR, 'ui', 'plugins.ui')
+        ui_file = sucker.find_data('ui/plugins.ui')
 
         self.builder = gtk.Builder()
         self.builder.add_from_file(ui_file)

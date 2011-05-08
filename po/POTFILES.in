@@ -1,0 +1,3 @@
+sucker.desktop.in
+bin/sucker
+[type: gettext/glade] data/ui/menubar.ui

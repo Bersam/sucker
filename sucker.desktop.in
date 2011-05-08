@@ -1,0 +1,10 @@
+[Desktop Entry]
+_Name=Sucker!
+_GenericName=Download Manager
+_X-GNOME-FullName=Sucker! Download Manager
+Type=Application
+_Comment=Sucker download manager comment
+Exec=sucker
+Icon=sucker
+Categories=GTK;GNOME;Network;
+X-GNOME-Gettext-Domain=sucker

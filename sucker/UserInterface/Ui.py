@@ -43,7 +43,7 @@ class Ui(gtk.Window):
         action = gtk.ActionGroup('MenuBarAction')
         action.add_actions(entries)
 
-        ui_file = os.path.join(sucker.DATA_DIR, 'ui', 'menubar.ui')
+        ui_file = sucker.find_data('ui/menubar.ui')
 
         self._menubar= gtk.UIManager()
         self._menubar.add_ui_from_file(ui_file)
