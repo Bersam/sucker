@@ -50,7 +50,10 @@ class DownloadsTab(gtk.VBox):
         builder = gtk.Builder()
         builder.add_from_file(ui_file)
 
-        combo = builder.get_object('downloadmanager-selector')
+        ok = builder.get_object('ok')
+        ok.set_sensitive(False)
+
+        combo = builder.get_object('manager')
         combo.connect('changed', self._add_combo_changed, builder)
 
         model = gtk.ListStore(gtk.gdk.Pixbuf, gobject.TYPE_STRING)
@@ -74,10 +77,22 @@ class DownloadsTab(gtk.VBox):
         dialog.run()
 
     def _add_response(self, dialog, response, builder):
+        if response == gtk.RESPONSE_OK:
+            combo  = builder.get_object('manager')
+            model  = combo.get_model()
+            active = combo.get_active()
+            manager = model[active][1]
+
+            entry = builder.get_object('url')
+            url = entry.get_text()
+
+            print ('url: %s\nmanager: %s\n***' % (url, manager))
         dialog.destroy()
 
     def _add_combo_changed(self, combo, builder):
         model  = combo.get_model()
         active = combo.get_active()
         selected = model[active][1]
-        print selected
+
+        ok = builder.get_object('ok')
+        ok.set_sensitive(True)

@@ -15,7 +15,7 @@
             <property name="can_focus">False</property>
             <property name="layout_style">end</property>
             <child>
-              <object class="GtkButton" id="button3">
+              <object class="GtkButton" id="ok">
                 <property name="label">gtk-ok</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
@@ -73,7 +73,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkComboBox" id="downloadmanager-selector">
+                  <object class="GtkComboBox" id="manager">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                   </object>
@@ -121,7 +121,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkEntry" id="entry1">
+                  <object class="GtkEntry" id="url">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="invisible_char">•</property>
@@ -149,8 +149,8 @@
       </object>
     </child>
     <action-widgets>
-      <action-widget response="0">button3</action-widget>
-      <action-widget response="0">button2</action-widget>
+      <action-widget response="-5">ok</action-widget>
+      <action-widget response="-6">button2</action-widget>
     </action-widgets>
   </object>
 </interface>
