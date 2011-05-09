@@ -1,16 +1,16 @@
 import gobject
 import gtk
-import time
 import os
 from gettext import lgettext as _
 
 import sucker
 
 class DownloadsTab(gtk.VBox):
-    def __init__(self, engine):
+    def __init__(self, engine, db):
         gtk.VBox.__init__(self, False, 0)
 
         self.plugin_engine = engine
+        self.data_base = db
 
         self._setup_menubar()
 
@@ -89,8 +89,8 @@ class DownloadsTab(gtk.VBox):
             url = entry.get_text()
 
             dic = {
-                'url':url,
-                'id' :time.strftime('%y%m%d%H%M%S', time.gmtime())
+                'url': url,
+                'id' : self.data_base.create_new_id()
             }
 
             self.plugin_engine.add_download(manager, dic)

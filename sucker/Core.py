@@ -1,5 +1,6 @@
 import gtk
 
+from DataBase import DataBase
 from PluginEngine import Engine
 from UserInterface import Ui
 from Config import Config
@@ -11,7 +12,9 @@ class Core:
         self.engine = Engine()
         self.engine.load_plugins()
 
-        self.ui = Ui(self.engine)
+        self.db = DataBase()
+
+        self.ui = Ui(self.engine, self.db)
         self.ui.connect('destroy', gtk.main_quit)
         self.ui.set_plugin_infos(self.engine.get_infos())
 
