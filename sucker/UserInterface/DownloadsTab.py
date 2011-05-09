@@ -1,5 +1,6 @@
 import gobject
 import gtk
+import time
 import os
 from gettext import lgettext as _
 
@@ -87,7 +88,13 @@ class DownloadsTab(gtk.VBox):
             entry = builder.get_object('url')
             url = entry.get_text()
 
-            print ('url: %s\nmanager: %s\n***' % (url, manager))
+            dic = {
+                'url':url,
+                'id' :time.strftime('%y%m%d%H%M%S', time.gmtime())
+            }
+
+            self.plugin_engine.add_download(manager, dic)
+
         dialog.destroy()
 
     def _add_combo_changed(self, combo, builder):

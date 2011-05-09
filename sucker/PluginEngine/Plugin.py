@@ -21,7 +21,6 @@ class Plugin:
         self.deactivate()
 
     def activate(self):
-        self._can_not_msg('activate')
         if self.error:
             self._can_not_msg('activate')
         else:
@@ -34,6 +33,13 @@ class Plugin:
         else:
             self.plugin_class.deactivate(self.shell)
             self.info['active'] = False
+
+    def add_download(self, dic):
+        try:
+            self.plugin_class.add_download(dic)
+        except AttributeError as err:
+            print _("can't add download. %s Plugin doesn't have add_download function" % self.info['name'])
+            print err
 
     def _activate_function(self, value):
         if value:

@@ -43,3 +43,6 @@ class Engine:
     def get_active_infos(self):
         infos = [self.plugins[key].info for key in self.plugins if self.plugins[key].info['active']==True]
         return infos
+
+    def add_download(self, name, dic):
+        self.plugins[name].add_download(dic)
