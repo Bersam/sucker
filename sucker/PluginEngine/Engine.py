@@ -8,7 +8,7 @@ from shell import shell
 
 class Engine:
     def __init__(self, db):
-        serlf.data_base = db
+        self.data_base = db
 
         self.plugins  = {}
 
