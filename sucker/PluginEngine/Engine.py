@@ -7,8 +7,12 @@ from Plugin import Plugin
 from shell import shell
 
 class Engine:
-    def __init__(self):
+    def __init__(self, db):
+        serlf.data_base = db
+
         self.plugins  = {}
+
+        self.downloads = {}
 
     def load_plugins(self):
         info_files = []
@@ -45,4 +49,8 @@ class Engine:
         return infos
 
     def add_download(self, name, dic):
-        self.plugins[name].add_download(dic)
+        dic['id'] = self.data_base.create_new_id()
+
+        self.downloads[dic['id']] = name
+
+        self.plugins[name].start_download(dic)

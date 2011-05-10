@@ -9,10 +9,10 @@ class Core:
     def __init__(self):
         self.config = Config()
 
-        self.engine = Engine()
-        self.engine.load_plugins()
-
         self.db = DataBase()
+
+        self.engine = Engine(self.db)
+        self.engine.load_plugins()
 
         self.ui = Ui(self.engine, self.db)
         self.ui.connect('destroy', gtk.main_quit)

@@ -7,12 +7,16 @@ from gettext import lgettext as _
 
 class Plugin:
     def __init__(self, path, shell):
-        self.error = False
         self.path = path
+        self.shell = shell
+
+        self.downloads = []
+        self.process_ids = []
+
+        self.error = False
+
         tmp, name = os.path.split(path)
         self.infofile = '%s.sucker-plugin' % name
-
-        self.shell = shell
 
         self._load_infofile()
         self._import_module()
@@ -34,9 +38,11 @@ class Plugin:
             self.plugin_class.deactivate(self.shell)
             self.info['active'] = False
 
-    def add_download(self, dic):
+    def start_download(self, dic):
         try:
-            self.plugin_class.start_download(dic)
+            pid = self.plugin_class.start_download(dic)
+            self.downloads.append(dic['id'])
+            self.process_ids.append(pid)
         except AttributeError as err:
             print _("can't add download. %s Plugin doesn't have start_download function" % self.info['name'])
             print err

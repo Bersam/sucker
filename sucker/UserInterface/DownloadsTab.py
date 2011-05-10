@@ -90,7 +90,6 @@ class DownloadsTab(gtk.VBox):
 
             dic = {
                 'url': url,
-                'id' : self.data_base.create_new_id()
             }
 
             self.plugin_engine.add_download(manager, dic)
