@@ -1,16 +1,18 @@
 '''To use it first you must run aria2c --enable-rpc'''
 
-import xmlrpclib,pexpect
-import errno,socket
+import errno
+import pexpect
+import socket
 import thread
+import xmlrpclib
 
 directory = "~/Download/aria2"
 server = "http://localhost"
-port ="6800"
+port = 6800
 
 class aria2:
 	def __init__(self):
-		self.su = xmlrpclib.ServerProxy(server + ":" + port + "/rpc")
+		self.su = xmlrpclib.ServerProxy("%s:%d/rpc" % (server, port))
 	
 	def start_download(self,dic):
 		try:
