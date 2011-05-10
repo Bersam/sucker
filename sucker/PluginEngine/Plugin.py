@@ -24,6 +24,17 @@ class Plugin:
     def __del__(self):
         self.deactivate()
 
+        for pid in self.process_ids:
+            try:
+                os.kill(pid, signal.SIGQUIT)
+            except Exception as err:
+                print err
+
+            try:
+                os.kill(pid, signal.SIQKILL)
+            except Exception as err:
+                print err
+
     def activate(self):
         if self.error:
             self._can_not_msg('activate')
