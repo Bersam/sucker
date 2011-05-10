@@ -36,9 +36,9 @@ class Plugin:
 
     def add_download(self, dic):
         try:
-            self.plugin_class.add_download(dic)
+            self.plugin_class.start_download(dic)
         except AttributeError as err:
-            print _("can't add download. %s Plugin doesn't have add_download function" % self.info['name'])
+            print _("can't add download. %s Plugin doesn't have start_download function" % self.info['name'])
             print err
 
     def _activate_function(self, value):

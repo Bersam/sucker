@@ -23,5 +23,5 @@ class aria2:
     def deactivate(self, shell):
         print ("aria2 plugin Deactivated")
 
-    def add_download(self, dic):
+    def start_download(self, dic):
         print dic
