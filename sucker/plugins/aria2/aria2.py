@@ -6,7 +6,7 @@ import socket
 import thread
 import xmlrpclib
 
-directory = "~/Download/aria2"
+directory = "~/Downloads/aria2"
 server = "http://localhost"
 port = 6800
 
@@ -17,7 +17,7 @@ class aria2:
 	def start_download(self,dic):
 		try:
 			url = dic['url']
-			self.su.aria2.addUri([url],dict(dir=directory))
+			self.su.aria2.addUri([url],{'dir':directory})
 		except socket.error , e:
 			if e.errno == errno.ECONNREFUSED:
 				self.start_server()
