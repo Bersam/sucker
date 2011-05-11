@@ -5,8 +5,9 @@ import pexpect
 import socket
 import thread
 import xmlrpclib
+from pprint import pprint
 
-directory = "~/Downloads/aria2"
+directory = "/home/bersam/Downloads/aria2"
 server = "http://localhost"
 port = 6800
 
@@ -17,7 +18,9 @@ class aria2:
 	def start_download(self,dic):
 		try:
 			url = dic['url']
+			print url
 			self.su.aria2.addUri([url],{'dir':directory})
+			print('downloaded')
 		except socket.error , e:
 			if e.errno == errno.ECONNREFUSED:
 				self.start_server()
@@ -25,7 +28,7 @@ class aria2:
 				raise
 
 	def start_server(self):
-		ss = pexpect.run("aria2c --enable-rpc --rpc-listen-port %d" % (port))
+		ss = pexpect.run("aria2c  -D --enable-rpc --rpc-listen-port %d" % (port))
 			 
 	def shutdown_server(self):
 		self.su.aria2.shutdown()
