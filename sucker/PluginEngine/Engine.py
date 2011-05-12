@@ -40,6 +40,9 @@ class Engine:
                     print _("Can not load %s plugin from %s." % (path, plug_path))
                     print _("Option `%s` not found in .sucker-plugin file." % msg)
 
+        for key in self.plugins:
+            self.plugins[key].activate()
+
     def get_infos(self):
         infos = [self.plugins[key].info for key in self.plugins]
         return infos
