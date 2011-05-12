@@ -14,7 +14,7 @@ class Core:
         self.engine = Engine(self.db)
         self.engine.load_plugins()
 
-        self.ui = Ui(self.engine, self.db)
+        self.ui = Ui(self.engine, self.config)
         self.ui.connect('destroy', gtk.main_quit)
         self.ui.set_plugin_infos(self.engine.get_infos())
 

@@ -6,11 +6,11 @@ from gettext import lgettext as _
 import sucker
 
 class DownloadsTab(gtk.VBox):
-    def __init__(self, engine, db):
+    def __init__(self, engine, config):
         gtk.VBox.__init__(self, False, 0)
 
         self.plugin_engine = engine
-        self.data_base = db
+        self.config = config
 
         self._setup_menubar()
 
@@ -55,6 +55,9 @@ class DownloadsTab(gtk.VBox):
         ok = builder.get_object('ok')
         ok.set_sensitive(False)
 
+        dir = builder.get_object('dir')
+        dir.set_filename(self.config.get_default_download_dir())
+
         combo = builder.get_object('manager')
         combo.connect('changed', self._add_combo_changed, builder)
 
@@ -88,8 +91,11 @@ class DownloadsTab(gtk.VBox):
             entry = builder.get_object('url')
             url = entry.get_text()
 
+            dir = builder.get_object('dir')
+
             dic = {
                 'url': url,
+                'dir': dir.get_filename(),
             }
 
             self.plugin_engine.add_download(manager, dic)
