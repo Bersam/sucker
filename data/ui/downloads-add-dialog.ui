@@ -56,10 +56,12 @@
           <object class="GtkVBox" id="box1">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <property name="spacing">3</property>
             <child>
               <object class="GtkHBox" id="box2">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
+                <property name="spacing">10</property>
                 <child>
                   <object class="GtkLabel" id="label1">
                     <property name="visible">True</property>
@@ -108,6 +110,7 @@
               <object class="GtkHBox" id="box3">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
+                <property name="spacing">10</property>
                 <child>
                   <object class="GtkLabel" id="label2">
                     <property name="visible">True</property>
@@ -143,11 +146,12 @@
               <object class="GtkHBox" id="box4">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
+                <property name="spacing">10</property>
                 <child>
                   <object class="GtkLabel" id="label3">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="label" translatable="yes">Save to folder</property>
+                    <property name="label" translatable="yes">Save To Folder:</property>
                   </object>
                   <packing>
                     <property name="expand">False</property>
