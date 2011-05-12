@@ -27,8 +27,6 @@ class aria2:
         command = 'aria2c --enable-rpc --rpc-listen-port %d' %  port
 
         self.aria_process = subprocess.Popen(command.split(' '))
-        while True:
-            try:
              
     def shutdown_server(self):
         self.su.aria2.shutdown()
