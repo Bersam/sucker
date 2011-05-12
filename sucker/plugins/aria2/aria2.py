@@ -3,9 +3,7 @@
 import errno
 import pexpect
 import socket
-import thread
 import xmlrpclib
-from pprint import pprint
 
 server = "http://localhost"
 port = 6800
