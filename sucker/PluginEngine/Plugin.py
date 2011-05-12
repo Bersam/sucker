@@ -25,6 +25,8 @@ class Plugin:
         self.deactivate()
 
         for pid in self.process_ids:
+            if pid == None:
+                continue
             try:
                 os.kill(pid, signal.SIGQUIT)
             except Exception as err:
