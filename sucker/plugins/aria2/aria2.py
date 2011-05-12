@@ -7,7 +7,6 @@ import thread
 import xmlrpclib
 from pprint import pprint
 
-directory = "/home/bersam/Downloads/aria2"
 server = "http://localhost"
 port = 6800
 
@@ -18,8 +17,13 @@ class aria2:
 	def start_download(self,dic):
 		try:
 			url = dic['url']
+            
+            args = {
+                'dir':dic['dir'],
+            }
+
 			print url
-			self.su.aria2.addUri([url],{'dir':directory})
+			self.su.aria2.addUri([url], args)
 			print('downloaded')
 		except socket.error , e:
 			if e.errno == errno.ECONNREFUSED:
