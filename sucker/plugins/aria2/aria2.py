@@ -1,8 +1,6 @@
 '''To use it first you must run aria2c --enable-rpc'''
 
-import errno
-import pexpect
-import socket
+import subprocess
 import xmlrpclib
 
 server = "http://localhost"
@@ -11,24 +9,26 @@ port = 6800
 class aria2:
     def __init__(self):
         self.su = xmlrpclib.ServerProxy("%s:%d/rpc" % (server, port))
+
+        self.aria_process = None
     
     def start_download(self,dic):
-        try:
-            url = dic['url']
-            args = {
-                'dir':dic['dir'],
-            }
-            print url
-            self.su.aria2.addUri([url], args)
-            print('downloaded')
-        except socket.error , e:
-            if e.errno == errno.ECONNREFUSED:
-                self.start_server()
-            else:
-                raise
+        if self.aria_process == None:
+            self.start_server()
+        url = dic['url']
+        args = {
+            'dir':dic['dir'],
+        }
+        print url
+        self.su.aria2.addUri([url], args)
+        print('downloaded')
 
     def start_server(self):
-        ss = pexpect.run("aria2c  -D --enable-rpc --rpc-listen-port %d" % (port))
+        command = 'aria2c --enable-rpc --rpc-listen-port %d' %  port
+
+        self.aria_process = subprocess.Popen(command.split(' '))
+        while True:
+            try:
              
     def shutdown_server(self):
         self.su.aria2.shutdown()
