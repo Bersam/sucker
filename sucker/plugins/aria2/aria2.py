@@ -20,8 +20,12 @@ class aria2:
             'dir':dic['dir'],
         }
         print url
-        self.su.aria2.addUri([url], args)
+        try:
+            self.su.aria2.addUri([url], args)
+        except Exception as err:
+            print err
         print('downloaded')
+        return self.aria_process.pid
 
     def start_server(self):
         command = 'aria2c --enable-rpc --rpc-listen-port %d' %  port

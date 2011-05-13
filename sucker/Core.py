@@ -15,9 +15,13 @@ class Core:
         self.engine.load_plugins()
 
         self.ui = Ui(self.engine, self.config)
-        self.ui.connect('destroy', gtk.main_quit)
+        self.ui.connect('destroy', self.quit)
         self.ui.set_plugin_infos(self.engine.get_infos())
 
     def run(self):
         self.ui.show_all()
         gtk.main()
+
+    def quit(self, window):
+        self.engine.deactivate_all()
+        gtk.main_quit()

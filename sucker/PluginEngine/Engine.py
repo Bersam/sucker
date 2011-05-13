@@ -57,3 +57,7 @@ class Engine:
         self.downloads[dic['id']] = name
 
         self.plugins[name].start_download(dic)
+
+    def deactivate_all(self):
+        for key in self.plugins:
+            self.plugins[key].deactivate()

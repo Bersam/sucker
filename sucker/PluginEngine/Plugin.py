@@ -2,6 +2,7 @@ import ConfigParser
 import imp
 import io
 import os.path
+import signal
 from gettext import lgettext as _
 
 
@@ -24,19 +25,6 @@ class Plugin:
     def __del__(self):
         self.deactivate()
 
-        for pid in self.process_ids:
-            if pid == None:
-                continue
-            try:
-                os.kill(pid, signal.SIGQUIT)
-            except Exception as err:
-                print err
-
-            try:
-                os.kill(pid, signal.SIQKILL)
-            except Exception as err:
-                print err
-
     def activate(self):
         if self.error:
             self._can_not_msg('activate')
@@ -50,6 +38,21 @@ class Plugin:
         else:
             self.plugin_class.deactivate(self.shell)
             self.info['active'] = False
+
+            print self.process_ids
+
+        for pid in self.process_ids:
+            if pid == None:
+                continue
+            try:
+                os.kill(pid, signal.SIGQUIT)
+            except Exception as err:
+                print err
+
+            try:
+                os.kill(pid, signal.SIGKILL)
+            except Exception as err:
+                print err
 
     def start_download(self, dic):
         try:
