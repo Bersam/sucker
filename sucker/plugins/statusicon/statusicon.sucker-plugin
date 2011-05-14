@@ -1,0 +1,3 @@
+name = Status Icon
+Type = plugin
+Module = statusicon
