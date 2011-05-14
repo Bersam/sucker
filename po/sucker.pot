@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-09 00:21+0430\n"
+"POT-Creation-Date: 2011-05-14 23:41+0430\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,7 +25,7 @@ msgstr ""
 msgid "Sucker download manager comment"
 msgstr ""
 
-#: ../sucker.desktop.in.h:3 ../sucker/UserInterface/Ui.py:63
+#: ../sucker.desktop.in.h:3 ../sucker/UserInterface/Ui.py:61
 msgid "Sucker!"
 msgstr ""
 
@@ -33,74 +33,75 @@ msgstr ""
 msgid "Sucker! Download Manager"
 msgstr ""
 
-#: ../bin/sucker:10
-msgid "Fuck World!"
-msgstr ""
-
-#: ../sucker/PluginEngine/Engine.py:36
+#: ../sucker/PluginEngine/Engine.py:43
 #, python-format
 msgid "Can not load %s plugin from %s."
 msgstr ""
 
-#: ../sucker/PluginEngine/Engine.py:37
+#: ../sucker/PluginEngine/Engine.py:44
 #, python-format
 msgid "Option `%s` not found in .sucker-plugin file."
 msgstr ""
 
-#: ../sucker/PluginEngine/Plugin.py:80
+#: ../sucker/PluginEngine/Plugin.py:64
+#, python-format
+msgid "can't add download. %s Plugin doesn't have start_download function"
+msgstr ""
+
+#: ../sucker/PluginEngine/Plugin.py:102
 #, python-format
 msgid "Can not run function: %s for %s"
 msgstr ""
 
-#: ../sucker/UserInterface/DownloadsTab.py:18
+#: ../sucker/UserInterface/DownloadsTab.py:19
 msgid "_Downloads"
 msgstr ""
 
-#: ../sucker/UserInterface/DownloadsTab.py:19
+#: ../sucker/UserInterface/DownloadsTab.py:20
 msgid "_Create New Download"
 msgstr ""
 
-#: ../sucker/UserInterface/PluginsDialog.py:46
+#: ../sucker/UserInterface/PluginsDialog.py:48
 msgid "Enabled"
 msgstr ""
 
-#: ../sucker/UserInterface/PluginsDialog.py:50
+#: ../sucker/UserInterface/PluginsDialog.py:52
 msgid "Plugin"
 msgstr ""
 
-#: ../sucker/UserInterface/Ui.py:15
+#: ../sucker/UserInterface/Ui.py:16
 msgid "Sucker"
 msgstr ""
 
-#: ../sucker/UserInterface/Ui.py:35
+#: ../sucker/UserInterface/Ui.py:33
 msgid "_File"
 msgstr ""
 
-#: ../sucker/UserInterface/Ui.py:38
+#: ../sucker/UserInterface/Ui.py:36
 msgid "_Edit"
 msgstr ""
 
-#: ../sucker/UserInterface/Ui.py:39
+#: ../sucker/UserInterface/Ui.py:37
 msgid "_Plugins"
 msgstr ""
 
-#: ../sucker/UserInterface/Ui.py:40
+#: ../sucker/UserInterface/Ui.py:38
 msgid "_Help"
 msgstr ""
 
-#: ../sucker/UserInterface/Ui.py:65
+#: ../sucker/UserInterface/Ui.py:63
 msgid "It Sucks!"
 msgstr ""
 
-#: ../sucker/UserInterface/Ui.py:69
+#: ../sucker/UserInterface/Ui.py:67
 msgid "Homepage"
 msgstr ""
 
-#: ../sucker/UserInterface/Ui.py:88
+#: ../sucker/UserInterface/Ui.py:85
 msgid "Downloads"
 msgstr ""
 
-#: ../sucker/UserInterface/Ui.py:92
+#: ../sucker/UserInterface/Ui.py:89
 msgid "Torrents"
 msgstr ""
 
@@ -113,6 +114,14 @@ msgid "Download Manager:"
 msgstr ""
 
 #: ../data/ui/downloads-add-dialog.ui.h:3
+msgid "Save To Folder:"
+msgstr ""
+
+#: ../data/ui/downloads-add-dialog.ui.h:4
+msgid "Select a Folder"
+msgstr ""
+
+#: ../data/ui/downloads-add-dialog.ui.h:5
 msgid "URL:"
 msgstr ""
 
