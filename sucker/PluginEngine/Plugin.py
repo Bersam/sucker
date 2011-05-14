@@ -39,8 +39,6 @@ class Plugin:
             self.plugin_class.deactivate(self.shell)
             self.info['active'] = False
 
-            print self.process_ids
-
         for pid in self.process_ids:
             if pid == None:
                 continue
