@@ -13,13 +13,14 @@ class statusicon:
         self.status_icon.set_visible(True)
 
         window = shell.get_window()
-        window.connect('delete-event', self.signal_delete_event)
+        self.handler = window.connect('delete-event', self.signal_delete_event)
 
     def deactivate(self, shell):
         self.status_icon.set_visible(False)
 
         window = shell.get_window()
         window.show_all()
+        window.disconnect(self.handler)
 
     def signal_activate(self, icon):
         window = self.shell.get_window()
