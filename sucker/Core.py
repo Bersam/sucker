@@ -15,7 +15,6 @@ class Core:
 
         self.ui = Ui(self.engine, self.config)
         self.ui.connect('destroy', self.quit)
-        self.ui.set_plugin_infos(self.engine.get_infos())
 
         self.engine.set_shell_items(self.ui)
         self.engine.load_plugins()

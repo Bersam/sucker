@@ -6,8 +6,10 @@ from gettext import lgettext as _
 import sucker
 
 class PluginsDialog(gtk.Dialog):
-    def __init__(self):
+    def __init__(self, engine):
         gtk.Dialog.__init__(self)
+
+        self.Plugin_engine = engine
 
         ui_file = sucker.find_data('ui/plugins.ui')
 
@@ -20,14 +22,14 @@ class PluginsDialog(gtk.Dialog):
         box.pack_start(obj, True, True, 0)
 
         self.setup_treeview()
+        self.create_rows()
 
-    def create_rows(self, infos):
-        self.infos = infos
+    def create_rows(self):
 
         tree  = self.builder.get_object('treeview')
         model = tree.get_model()
 
-        for info in infos:
+        for info in self.Plugin_engine.get_infos():
             iterator = model.append()
             model.set(iterator,
                       0, info['active'],
@@ -58,7 +60,7 @@ class PluginsDialog(gtk.Dialog):
 
         name = model.get_value(iter, 1)
 
-        for info in self.infos:
+        for info in self.Plugin_engine.get_infos():
             if info['name'] == name:
                 break
 
@@ -92,7 +94,7 @@ class PluginsDialog(gtk.Dialog):
         fixed = not fixed
         model.set(iter, 0, fixed)
 
-        for info in self.infos:
+        for info in self.Plugin_engine.get_infos():
             if info['name'] == name:
                 info['activate_function'](fixed)
                 break

@@ -28,9 +28,6 @@ class Ui(gtk.Window):
         self._attach_downloads_tab()
         self._attach_torrents_tab()
 
-    def set_plugin_infos(self, infos):
-        self.plugin_infos = infos
-
     def _setup_menubar(self):
         entries = (
             ('File'   , None           , _("_File")   , None     , None, None),
@@ -79,8 +76,7 @@ class Ui(gtk.Window):
         self.emit('destroy')
 
     def _plugin_action(self, action):
-        dialog = PluginsDialog()
-        dialog.create_rows(self.plugin_infos)
+        dialog = PluginsDialog(self.plugin_engine)
         dialog.run()
         dialog.destroy()
 
