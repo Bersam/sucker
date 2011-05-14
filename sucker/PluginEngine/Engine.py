@@ -4,7 +4,7 @@ import os.path
 
 import sucker
 from Plugin import Plugin
-from shell import shell
+from Shell import Shell
 
 class Engine:
     def __init__(self, db):
@@ -13,6 +13,9 @@ class Engine:
         self.plugins  = {}
 
         self.downloads = {}
+
+    def set_shell_items(self, window):
+        self.shell = Shell(window)
 
     def load_plugins(self):
         info_files = []
@@ -32,7 +35,7 @@ class Engine:
                     plug_name   = info_conf.get('DEFAULT', 'name')
                     plug_type   = info_conf.get('DEFAULT', 'type')
                     plug_module = info_conf.get('DEFAULT', 'module')
-                    self.plugins[plug_name] = Plugin(plug_path, shell())
+                    self.plugins[plug_name] = Plugin(plug_path, self.shell)
                 except ConfigParser.NoOptionError as err:
                     msg = err.message
                     msg = msg[msg.find("'")+1:]
