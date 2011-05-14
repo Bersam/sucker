@@ -33,6 +33,9 @@ class Plugin:
             self.info['active'] = True
 
     def deactivate(self):
+        if self.info['active'] == False:
+            return
+
         if self.error:
             self._can_not_msg('deactivate')
         else:

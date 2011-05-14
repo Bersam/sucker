@@ -6,7 +6,7 @@ class HelloWorld:
         pass
 
     def activate(self, shell):
-        print ("Hello World Activated")
+        print ("Fuck World!")
 
     def deactivate(self, shell):
         print ("Hello World Deactivated")
