@@ -1,5 +1,3 @@
-'''To use it first you must run aria2c --enable-rpc'''
-
 import subprocess
 import xmlrpclib
 
