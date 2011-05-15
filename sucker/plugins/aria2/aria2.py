@@ -1,3 +1,4 @@
+import socket
 import subprocess
 import xmlrpclib
 
@@ -29,6 +30,15 @@ class aria2:
         command = 'aria2c --enable-rpc --rpc-listen-port %d' %  port
 
         self.aria_process = subprocess.Popen(command.split(' '))
+        
+        c = 0
+        while True:
+            try:
+                print self.su.aria2.getVersion()
+                break
+            except Exception as err:
+                print c, err
+                c+=1
              
     def shutdown_server(self):
         self.su.aria2.shutdown()
