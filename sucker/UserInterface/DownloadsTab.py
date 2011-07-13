@@ -56,7 +56,12 @@ class DownloadsTab(gtk.VBox):
         ok.set_sensitive(False)
 
         dir = builder.get_object('dir')
-        dir.set_filename(self.config.get_default_download_dir())
+
+        try:
+            dir.set_filename(self.config.get_default_download_dir())
+        except TypeError as err:
+            USER_DIRECTORY_DOWNLOAD = "~/Downloads"
+            print _("USER_DIRECTORY_DOWNLOAD variable not found, Defaults to ~/Downloads")
 
         combo = builder.get_object('manager')
         combo.connect('changed', self._add_combo_changed, builder)
