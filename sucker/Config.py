@@ -1,5 +1,7 @@
 import glib
 
+from gettext import lgettext as _
+
 class Config:
     def __init__(self):
         pass
